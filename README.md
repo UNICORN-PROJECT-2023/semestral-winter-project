@@ -1,4 +1,4 @@
-# cloud-video-storage
+# UuEduKit
 
 ## Client
 

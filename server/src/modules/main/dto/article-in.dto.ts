@@ -18,19 +18,10 @@ export class ArticleInDto {
   @ApiProperty({required: false})
   description: string;
 
-  @IsNumber()
-  @ApiProperty({required: false})
-  episode: number;
-
-  @IsString()
-  @MinLength(1)
-  @MaxLength(200)
-  @ApiProperty({required: true})
-  originalLink: string;
-  
   @IsArray()
   @IsString({ each: true })
   @ArrayMinSize(0)
+  @ArrayMaxSize(20)
   @ApiProperty({required: true})
   materials: Array<string>;
 
@@ -46,8 +37,6 @@ export class ArticleInDto {
   constructor(name: string, description: string, episode: number, originalLink: string, materials: Array<string>, categories: Array<CategoryInDto>) {
     this.name = name;
     this.description = description;
-    this.episode = episode;
-    this.originalLink = originalLink;
     this.materials = materials;
     this.categories = categories;
   }

@@ -12,11 +12,6 @@ export class ArticleOutDto {
   @ApiProperty({required: true})
   description: string;
 
-  @ApiProperty({required: true})
-  episode: number;
-
-  @ApiProperty({required: true})
-  originalLink: string;
   
   @ApiProperty({required: true})
   materials: Array<string>;
@@ -46,8 +41,6 @@ export class ArticleOutDto {
     this.id = id;
     this.name = name;
     this.description = description;
-    this.episode = episode;
-    this.originalLink = originalLink;
     this.materials = materials;
     this.owner = owner;
     this.subscribers = subscribers;

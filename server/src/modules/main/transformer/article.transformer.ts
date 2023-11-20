@@ -10,8 +10,8 @@ export class ArticleTransformer {
     const articleEntity = new ArticleEntity(
       articleInDto.name,
       articleInDto.description,
-      articleInDto.episode,
-      articleInDto.originalLink,
+      0,
+      "",
       articleInDto.materials
     );
 
