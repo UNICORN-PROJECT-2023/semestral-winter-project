@@ -56,7 +56,7 @@ const StyledWrapper = styled.div`
   }
   
   a {
-    color: white;
+    color: black;
   }
 `;
 

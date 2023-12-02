@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import ArticleService from '../services/ArticleService';
 import UserService from '../services/userService';
 import DateUtils from '../utils/DateUtils';
-import ButtonComponent from '../components/ButtonComponent';
+import ButtonComponent from './ButtonComponent';
 import { Link } from 'react-router-dom';
-import GetCategories from '../components/GetCategories'
+import GetCategories from './GetCategories'
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -162,19 +162,19 @@ export default function AllArticlesComponent() {
               key={Article.id}
             >
               <div className="iframeWrapper" >
-                <iframe
+                {/* <iframe
                   src={`https://www.youtube.com/embed/${getArticleIdFromUrl(Article.originalLink)}`}
                   title="YouTube Article player"
                   frameBorder="0"
                   allow="picture-in-picture;"
                   allowFullScreen
-                />
+                /> */}
               </div>
               <Link to={`/Article/${Article.id}`} style={{ textDecoration: 'none', color: 'white' }}>
                 <div>
                   <h3>{Article.name}</h3>
                   <p className="ArticleOwner">{Article.owner.name}</p>
-                  <p  className="ArticleEpisode">Episode: {Article.episode}</p>
+                  {/* <p  className="ArticleEpisode">Episode: {Article.episode}</p> */}
                   <GetCategories array={Article.categories} />
                   <p>Created: {DateUtils.getAgeFromDate(new Date(Article.createdAt))} ago</p>
                 </div>
@@ -184,13 +184,13 @@ export default function AllArticlesComponent() {
                   ? <ButtonComponent
                     bgColor="red"
                     onClick={() => deleteArticleFromList(Article.id)}
-                    txtColor="white"
+                    txtColor="black"
                     text="Delete from list"
                   />
                   : <ButtonComponent
                     bgColor="#3c6ca8"
                     onClick={() => addToList(Article.id)}
-                    txtColor="white"
+                    txtColor="black"
                     text="Add to list"
                   />
                 : null

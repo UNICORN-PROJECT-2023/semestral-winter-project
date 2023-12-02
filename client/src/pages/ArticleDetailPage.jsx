@@ -32,19 +32,19 @@ export default function ArticleDetailPage(props) {
     <StyledWrapper>
       <div className="articleDetail" key={props.articlesData?.id}>
         <div className="articleWrapper">
-          <iframe
+          {/* <iframe
             src={`https://www.youtube.com/embed/${props.getArticleIdFromUrl(props.articlesData?.originalLink)}`}
             title="YouTube article player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-          />
+          /> */}
         </div>
         <h1>{props.articlesData?.name}</h1>
         <p>{props.articlesData?.description}</p>
         <p>Owner: {props.articlesData?.owner?.name}</p>
-        <p>Episode: {props.articlesData?.episode}</p>
-        <p>Materials: {props.articlesData?.materials}</p>
+        {/* <p>Episode: {props.articlesData?.episode}</p> */}
+        {/* <p>Materials: {props.articlesData?.materials}</p> */}
         <p>Created: {DateUtils.getAgeFromDate(new Date(props.articlesData?.createdAt))} ago</p>
       </div>
     </StyledWrapper>

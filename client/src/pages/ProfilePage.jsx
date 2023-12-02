@@ -51,12 +51,12 @@ function ProfilePage(props) {
                   <ButtonComponent
                     bgColor="green"
                     onClick={() => props.editUser() && props.onCancelUserClick}
-                    txtColor="white"
+                    txtColor="black"
                     text="Save"
                   />
                   <ButtonComponent
                     bgColor="#3c6cb9"
-                    txtColor="white"
+                    txtColor="black"
                     text="Cancel"
                     onClick={props.onCancelUserClick}
                   />
@@ -71,7 +71,7 @@ function ProfilePage(props) {
                 onClick={props.userEditMode}
                 text='Edit user data'
                 bgColor='orange'
-                txtColor='white'
+                txtColor='black'
               />
             </>
           )}
@@ -80,8 +80,8 @@ function ProfilePage(props) {
           <h1>Create Article</h1>
           <input type="text" name="title" ref={props.nameRef} placeholder="Title" />
           <textarea name="description" ref={props.descriptionRef} style={{ width: '65%' }} rows="4" placeholder="Description" />
-          <input type="text" name="episode" ref={props.episodeRef} placeholder="Episode" />
-          <input type="text" name="url" ref={props.urlRef} placeholder="Url" />
+          <input type="text" name="" ref={props.episodeRef} placeholder="" />
+          <input type="text" name="" ref={props.urlRef} placeholder="" />
           <div className="categorySection">
             {props.dataForCategories.map((category) => (
               <button className="categoryButton" key={category.id} style={category?.isSelected ? { background: "#3c6cb9" } : null} onClick={() => props.onCategoryClick(category.name)}>
@@ -89,12 +89,12 @@ function ProfilePage(props) {
               </button>
             ))}
           </div>
-          <input type="text" name="materials" ref={props.materialsRef} placeholder="Materials" />
+          <input type="text" name="" ref={props.materialsRef} placeholder="" />
           {props.error && <p style={{ color: '#D2122E', fontWeight: '1000' }}>{String(props.error)}</p>}
           <ButtonComponent
             bgColor="#3c6ca8"
             onClick={props.onCreateClick}
-            txtColor="white"
+            txtColor="black"
             text="Create"
           />
         </FormComponent>
@@ -111,8 +111,8 @@ function ProfilePage(props) {
                 <FormComponent>
                   <input type="text" name="title" ref={props.editNameRef} defaultValue={Article.name} placeholder="Title" />
                   <textarea name="description" ref={props.editDescriptionRef} defaultValue={Article.description} style={{ width: '65%' }} rows="4" placeholder="Description" />
-                  <input type="text" name="episode" ref={props.editEpisodeRef} defaultValue={Article.episode} placeholder="Episode" />
-                  <input type="text" name="url" ref={props.editUrlRef} defaultValue={Article.originalLink} placeholder="Url" />
+                  <input type="text" name="" ref={props.editEpisodeRef} defaultValue={Article.episode} placeholder="" />
+                  <input type="text" name="" ref={props.editUrlRef} defaultValue={Article.originalLink} placeholder="" />
                   <div className="categorySection">
                     {props.dataForUpdatedCategories.map((category) => (
                       <button className="categoryButton" key={category.id} style={category?.isSelected ? { background: "#3c6cb9" } : null} onClick={() => props.onCategoryUpdateClick(category.name)}>
@@ -124,13 +124,13 @@ function ProfilePage(props) {
                   <ButtonComponent
                     bgColor="green"
                     onClick={() => props.updateArticle(Article.id)}
-                    txtColor="white"
+                    txtColor="black"
                     text="Save"
                   />
                   <ButtonComponent
                     bgColor="red"
                     onClick={() => props.onCancelClick(Article.id)}
-                    txtColor="white"
+                    txtColor="black"
                     text="Cancel"
                   />
                 </FormComponent>
@@ -138,19 +138,19 @@ function ProfilePage(props) {
             ) : (
               <>
                 <div className="iframeWrapper">
-                  <iframe
+                  {/* <iframe
                     src={`https://www.youtube.com/embed/${props.getArticleIdFromUrl(Article.originalLink)}`}
                     title="YouTube Article player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
-                  />
+                  /> */}
                 </div>
-                <Link to={`/Article/${Article.id}`} style={{ textDecoration: 'none', color: 'white' }}>
+                <Link to={`/Article/${Article.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                   <div>
                     <h3>{Article.name}</h3>
                     <p>{Article.owner.name}</p>
-                    <p>Episode: {Article.episode}</p>
+                    {/* <p>Episode: {Article.episode}</p> */}
                     <GetCategories array={Article.categories} />
                     <span>Created: {DateUtils.getAgeFromDate(new Date(Article.createdAt))} ago</span>
                   </div>
@@ -158,13 +158,13 @@ function ProfilePage(props) {
                 <ButtonComponent
                   bgColor="#3c6ca8"
                   onClick={() => props.editModeTrue(Article.id)}
-                  txtColor="white"
+                  txtColor="black"
                   text="Edit"
                 />
                 <ButtonComponent
                   bgColor="red"
                   onClick={() => props.onDeleteClick(Article.id)}
-                  txtColor="white"
+                  txtColor="black"
                   text="Delete"
                 />
               </>
@@ -181,19 +181,19 @@ function ProfilePage(props) {
             >
               <>
                 <div className="iframeWrapper">
-                  <iframe
+                  {/* <iframe
                     src={`https://www.youtube.com/embed/${props.getArticleIdFromUrl(Article.originalLink)}`}
                     title="YouTube Article player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
-                  />
+                  /> */}
                 </div>
-                <Link to={`/Article/${Article.id}`} style={{ textDecoration: 'none', color: 'white' }}>
+                <Link to={`/Article/${Article.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                   <div>
                     <h3>{Article.name}</h3>
                     <p>Owner: {Article.owner.name}</p>
-                    <p>Episode: {Article.episode}</p>
+                    {/* <p>Episode: {Article.episode}</p> */}
                     <GetCategories array={Article.categories} />
                     <span>Created: {DateUtils.getAgeFromDate(new Date(Article.createdAt))} ago</span>
                   </div>
@@ -201,7 +201,7 @@ function ProfilePage(props) {
                 <ButtonComponent
                   onClick={() => props.onDeleteFromList(Article.id)}
                   bgColor="red"
-                  txtColor="white"
+                  txtColor="black"
                   text="Remove from list"
                 />
               </>

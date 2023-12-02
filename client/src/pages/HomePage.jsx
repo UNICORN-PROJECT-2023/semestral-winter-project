@@ -53,7 +53,7 @@ const StyledWrapper = styled.div`
         text-transform: uppercase;
         transition: 0.5s;
         background-size: 200% auto;
-        color: white;
+        color: black;
         border-radius: 0.5rem;
         font-weight: 700;
         letter-spacing: 2px;
