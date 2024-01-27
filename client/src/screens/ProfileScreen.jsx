@@ -98,6 +98,7 @@ function ProfileScreen() {
       await articleService.createArticle(
         nameRef.current.value,
         descriptionRef.current.value,
+        originalLinkRef.current.value,
         [materialsRef.current.value],
         categories
             .filter((category) => category.isSelected)

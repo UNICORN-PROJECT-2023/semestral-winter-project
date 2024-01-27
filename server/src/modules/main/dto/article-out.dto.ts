@@ -12,6 +12,8 @@ export class ArticleOutDto {
   @ApiProperty({required: true})
   description: string;
 
+  @ApiProperty({required: true})
+  imageUrl: string;
   
   @ApiProperty({required: true})
   materials: Array<string>;
@@ -29,6 +31,14 @@ export class ArticleOutDto {
   }>
 
   @ApiProperty({required: true})
+  questions: Array<{
+    id: number,
+    title: string,
+    description: string,
+    answer: boolean,
+  }>
+
+  @ApiProperty({required: true})
   categories: Array<CategoryOutDto>
 
   @ApiProperty({required: true})
@@ -37,14 +47,16 @@ export class ArticleOutDto {
   @ApiProperty({required: true})
   updatedAt: Date;
   
-  constructor(id: number, name: string, description: string, episode: number, originalLink: string, materials: Array<string>, owner: {id: number, name: string}, subscribers: Array<{id: number, name: string}>, categories: Array<CategoryOutDto>, createdAt: Date, updatedAt: Date) {
+  constructor(id: number, name: string, description: string, imageUrl: string, question: Array<{id: number, title: string, description: string, answer: boolean}>, materials: Array<string>, owner: {id: number, name: string}, subscribers: Array<{id: number, name: string}>, categories: Array<CategoryOutDto>, createdAt: Date, updatedAt: Date) {
     this.id = id;
     this.name = name;
     this.description = description;
+    this.imageUrl = imageUrl;
     this.materials = materials;
     this.owner = owner;
     this.subscribers = subscribers;
     this.categories = categories;
+    this.questions = question;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }

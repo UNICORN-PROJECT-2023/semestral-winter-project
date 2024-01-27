@@ -22,7 +22,7 @@ const StyledArticleList = styled.div`
     padding: 1rem;
     .iframeWrapper {
         position: relative;
-        padding-top: 56.25%; /* 16:9 aspect ratio */
+        padding-top: 10.25%; /* 16:9 aspect ratio */
       }
       iframe {
         position: absolute;
@@ -162,13 +162,11 @@ export default function AllArticlesComponent() {
               key={Article.id}
             >
               <div className="iframeWrapper" >
-                {/* <iframe
-                  src={`https://www.youtube.com/embed/${getArticleIdFromUrl(Article.originalLink)}`}
-                  title="YouTube Article player"
-                  frameBorder="0"
-                  allow="picture-in-picture;"
-                  allowFullScreen
-                /> */}
+              <img
+                  width={"100%"}
+                  src={`${Article?.imageUrl}`}
+                  alt="article image"
+                />
               </div>
               <Link to={`/Article/${Article.id}`} style={{ textDecoration: 'none', color: 'white' }}>
                 <div>
@@ -191,7 +189,7 @@ export default function AllArticlesComponent() {
                     bgColor="#3c6ca8"
                     onClick={() => addToList(Article.id)}
                     txtColor="black"
-                    text="Add to list"
+                    text="Study course"
                   />
                 : null
               }

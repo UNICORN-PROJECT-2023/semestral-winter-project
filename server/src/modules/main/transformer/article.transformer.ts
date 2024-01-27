@@ -11,24 +11,32 @@ export class ArticleTransformer {
       articleInDto.name,
       articleInDto.description,
       0,
-      "",
+      articleInDto.imageUrl,
       articleInDto.materials
     );
 
     return articleEntity;
   }
 
-  static entityToDto(articleEntity: ArticleEntity): ArticleOutDto {
+  static entityToDto(articleEntity: ArticleEntity, {cstId}): ArticleOutDto {
     const owner = articleEntity.customerArticleEntity.find((customerArticle) => customerArticle.type === ArticleType.OWNER);
     const subscribers = articleEntity.customerArticleEntity.filter((customerArticle) => customerArticle.type === ArticleType.SUBSCRIBER);
     const categories = articleEntity.categoryArticleEntity.map((categoryArticle) => categoryArticle.categoryEntity);
+    const questions = articleEntity.questionEntity.filter((question) => owner.id == cstId  || subscribers.find((subscriber) => subscriber.customerEntity.id == cstId));
 
     const articleDto = new ArticleOutDto(
       articleEntity.id,
       articleEntity.title,
       articleEntity.content,
-      articleEntity.excerpt,
       articleEntity.featuredImageLink,
+      questions.map((question) => {
+        return ({
+          id: question?.id,
+          title: question?.title,
+          description: question?.description,
+          answer: question?.answer,
+        })
+      }),
       articleEntity.tags,
       {
         id: owner?.customerEntity.id,

@@ -15,7 +15,9 @@ export class ArticleController {
   @Get("/all")
   @ApiQuery({ name: 'categoryId', type: Number, required: false })
   async getAllArticles(@Req() req: any, @Query('categoryId') id: number): Promise<ResponseDto<Array<ArticleOutDto>>> {
-    const articleOutArray = await this.articleService.getAllArticles(id);
+    const cstId = req?.user?.id;
+
+    const articleOutArray = await this.articleService.getAllArticles(id, cstId);
 
     const response = new ResponseDtoBuilder<Array<ArticleOutDto>>()
       .setStatusCode(HttpStatus.OK)
@@ -45,7 +47,8 @@ export class ArticleController {
   @Get("/:articleId")
   @ApiParam({ name: 'articleId', type: Number })
   async getArticle(@Req() req: any, @Param('articleId') id: number): Promise<ResponseDto<ArticleOutDto>> {
-    const articleOut = await this.articleService.getArticleById(id);
+    const cstId = req?.user?.id;
+    const articleOut = await this.articleService.getArticleById(id, cstId);
     
     const response = new ResponseDtoBuilder<ArticleOutDto>()
       .setStatusCode(HttpStatus.OK)

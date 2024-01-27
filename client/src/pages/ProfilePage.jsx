@@ -80,8 +80,8 @@ function ProfilePage(props) {
           <h1>Create Article</h1>
           <input type="text" name="title" ref={props.nameRef} placeholder="Title" />
           <textarea name="description" ref={props.descriptionRef} style={{ width: '65%' }} rows="4" placeholder="Description" />
-          <input type="text" name="" ref={props.episodeRef} placeholder="" />
-          <input type="text" name="" ref={props.urlRef} placeholder="" />
+          <input style={{display: "none"}} type="text" name="" ref={props.episodeRef} placeholder="" />
+          <input type="text" name="image url" ref={props.urlRef} placeholder="Image url" />
           <div className="categorySection">
             {props.dataForCategories.map((category) => (
               <button className="categoryButton" key={category.id} style={category?.isSelected ? { background: "#3c6cb9" } : null} onClick={() => props.onCategoryClick(category.name)}>
@@ -89,7 +89,7 @@ function ProfilePage(props) {
               </button>
             ))}
           </div>
-          <input type="text" name="" ref={props.materialsRef} placeholder="" />
+          <input style={{display: "none"}} type="text" name="" ref={props.materialsRef} placeholder="" />
           {props.error && <p style={{ color: '#D2122E', fontWeight: '1000' }}>{String(props.error)}</p>}
           <ButtonComponent
             bgColor="#3c6ca8"
@@ -138,13 +138,11 @@ function ProfilePage(props) {
             ) : (
               <>
                 <div className="iframeWrapper">
-                  {/* <iframe
-                    src={`https://www.youtube.com/embed/${props.getArticleIdFromUrl(Article.originalLink)}`}
-                    title="YouTube Article player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  /> */}
+                <img
+                  width={"100%"}
+                  src={`${Article?.imageUrl}`}
+                  alt="article image"
+                />
                 </div>
                 <Link to={`/Article/${Article.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                   <div>
@@ -181,13 +179,11 @@ function ProfilePage(props) {
             >
               <>
                 <div className="iframeWrapper">
-                  {/* <iframe
-                    src={`https://www.youtube.com/embed/${props.getArticleIdFromUrl(Article.originalLink)}`}
-                    title="YouTube Article player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  /> */}
+                <img
+                  width={"100%"}
+                  src={`${Article?.imageUrl}`}
+                  alt="article image"
+                />
                 </div>
                 <Link to={`/Article/${Article.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                   <div>

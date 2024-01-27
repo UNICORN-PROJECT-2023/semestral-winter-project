@@ -12,14 +12,16 @@ import { ArticleListService } from './services/article-list.service';
 import { ArticleListController } from './controllers/article-list.controller';
 import { CategoryService } from './services/category.service';
 import { CategoryController } from './controllers/category.controller';
+import { QuestionController } from './controllers/question-controller';
+import { QuestionService } from './services/question.service';
 
 @Module({
   imports: [
     DatabaseModule,
     GuardModule
   ],
-  controllers: [UserController, ArticleController, ArticleListController, CategoryController],
-  providers: [ UserService, PasswordService, ArticleService, ArticleListService, CategoryService],
+  controllers: [UserController, ArticleController, ArticleListController, CategoryController, QuestionController],
+  providers: [ UserService, PasswordService, ArticleService, ArticleListService, CategoryService, QuestionService],
   exports: []
 })
 export class MainModule {}

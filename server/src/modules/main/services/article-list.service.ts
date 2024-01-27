@@ -32,7 +32,7 @@ export class ArticleListService {
         (customer) => customer.customerEntity.id == cstId && customer.type === ArticleType.SUBSCRIBER)
       )
       .map(
-        (articleEntity) => ArticleTransformer.entityToDto(articleEntity)
+        (articleEntity) => ArticleTransformer.entityToDto(articleEntity, {cstId})
       ); 
 
     return articleDtoArray;

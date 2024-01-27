@@ -17,13 +17,20 @@ export class AppGuard extends AuthGuard('jwt') {
     const req = context.switchToHttp().getRequest();
     const roles = this.reflector.get<string[]>('roles', context.getHandler());
 
-    // if endpoint doesnot have a role allow access
-    if (!roles) {
-      return true;
-    }
+    try {
+        await super.canActivate(context);
+      } catch(e) {
+        console.log("User is not authorized");
 
-    // receive jwt from guard
-    await super.canActivate(context);
+        if(!roles) {
+          return true;
+        }
+        return false;
+      }
+
+      if(!roles) {
+        return true;
+      }
 
     // validate role access
     return this.matchRoles(roles, req?.user?.roles || "");

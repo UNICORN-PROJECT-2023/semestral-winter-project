@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { CustomerArticleEntity } from './customer-article.entity';
 import { CategoryArticleEntity } from './category-article.entity';
+import { QuestionEntity } from './question.entity';
 
 @Entity({ name: 'article' })
 export class ArticleEntity {
@@ -39,6 +40,12 @@ export class ArticleEntity {
     (categoryArticleEntity) => categoryArticleEntity.articleEntity, { onDelete: 'CASCADE' }
   )
   categoryArticleEntity: CategoryArticleEntity[];
+
+  @OneToMany(
+    () => QuestionEntity,
+    (questionEntity) => questionEntity.articleEntity, { onDelete: 'CASCADE' }
+  )
+  questionEntity: QuestionEntity[];
   
   constructor(title: string, content: string, excerpt: number, featuredImageLink: string, tags: Array<string>) {
     this.title = title;

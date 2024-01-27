@@ -15,7 +15,7 @@ const StyledArticleList = styled.div`
     padding: 1rem;
     .iframeWrapper {
         position: relative;
-        padding-top: 56.25%; /* 16:9 aspect ratio */
+        padding-top: 10.25%; /* 16:9 aspect ratio */
       }
       iframe {
         position: absolute;

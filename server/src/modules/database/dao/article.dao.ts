@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Equal, Repository } from 'typeorm';
 import { CustomerArticleEntity } from '../entity/customer-article.entity';
 import { CustomerEntity } from '../entity/customer.entity';
 import { ArticleEntity } from '../entity/article.entity';
@@ -24,7 +24,8 @@ export class ArticleDao {
       "customerArticleEntity",  
       "customerArticleEntity.customerEntity",
       "categoryArticleEntity",  
-      "categoryArticleEntity.categoryEntity"
+      "categoryArticleEntity.categoryEntity",
+      "questionEntity",
     ]});
   }
 
@@ -35,7 +36,8 @@ export class ArticleDao {
         "customerArticleEntity",  
         "customerArticleEntity.customerEntity",
         "categoryArticleEntity",  
-        "categoryArticleEntity.categoryEntity"
+        "categoryArticleEntity.categoryEntity",
+        "questionEntity",
       ], 
       where: { id: id }
     });

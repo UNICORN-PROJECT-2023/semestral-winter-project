@@ -36,8 +36,8 @@ export default class ArticleService {
         throw new Error("Failed to get article");
     }
 
-    createArticle = async (name, description, materials = [], categories = []) => {
-        const response = await this.apiService.post('/article', { name, description, materials, categories});
+    createArticle = async (name, description, imageUrl, materials = [], categories = []) => {
+        const response = await this.apiService.post('/article', { name, description, imageUrl, materials, categories});
         console.log(await response.json());
         console.log(response);
         if (response.status === 200 || response.status === 201 || response.status === 202) {

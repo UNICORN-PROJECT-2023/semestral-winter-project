@@ -4,9 +4,10 @@ import { CustomerEntity } from './entity/customer.entity';
 import { ArticleEntity } from './entity/article.entity';
 import { CategoryEntity } from './entity/category.entity';
 import { CategoryArticleEntity } from './entity/category-article.entity';
+import { QuestionEntity } from './entity/question.entity';
 
 // List of entities
-const entities = [CustomerEntity, ArticleEntity, CustomerArticleEntity, CategoryEntity, CategoryArticleEntity]
+const entities = [CustomerEntity, ArticleEntity, CustomerArticleEntity, CategoryEntity, CategoryArticleEntity, QuestionEntity]
 
 export const Provider = [
   TypeOrmModule.forRoot({

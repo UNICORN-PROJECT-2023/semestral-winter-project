@@ -7,6 +7,7 @@ import { ArticleDao } from './dao/article.dao';
 import { CustomerArticleDao } from './dao/customer-article.dao'; 
 import { CategoryDao } from './dao/category.dao';
 import { CategoryArticleDao } from './dao/category-article.dao';
+import { QuestionDao } from './dao/question.dao';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CategoryArticleDao } from './dao/category-article.dao';
     CustomerArticleDao, 
     CategoryDao,
     CategoryArticleDao,
+    QuestionDao,
   ],
   exports: [
     CustomerDao,
@@ -25,6 +27,7 @@ import { CategoryArticleDao } from './dao/category-article.dao';
     CustomerArticleDao,
     CategoryDao,
     CategoryArticleDao,
+    QuestionDao,
   ],
 })
 export class DatabaseModule {}

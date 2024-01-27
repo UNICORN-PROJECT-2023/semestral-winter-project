@@ -36,7 +36,7 @@ export class ArticleService {
         (customer) => customer.customerEntity.id == cstId && customer.type === ArticleType.SUBSCRIBER)
       )
       .map(
-        (articleEntity) => ArticleTransformer.entityToDto(articleEntity)
+        (articleEntity) => ArticleTransformer.entityToDto(articleEntity, {cstId})
       );
 
     return articleDaoArray;
@@ -50,26 +50,26 @@ export class ArticleService {
         (customer) => customer.customerEntity.id == cstId && customer.type === ArticleType.OWNER)
       )
       .map(
-        (articleEntity) => ArticleTransformer.entityToDto(articleEntity)
+        (articleEntity) => ArticleTransformer.entityToDto(articleEntity, {cstId})
       );
 
     return articleDaoArray;
   }
   
-  async getAllArticles(catId?: number): Promise<Array<ArticleOutDto>> {
+  async getAllArticles(catId?: number, cstId?: number): Promise<Array<ArticleOutDto>> {
     const articleEntityArray = await this.articleDao.findAll();
 
     const articleDaoArray: Array<ArticleOutDto> = articleEntityArray
     .filter((articleEntity) => catId == undefined || articleEntity.categoryArticleEntity.find((categoryArticle) => catId == categoryArticle.categoryEntity.id))
-    .map((articleEntity) => ArticleTransformer.entityToDto(articleEntity)); 
+    .map((articleEntity) => ArticleTransformer.entityToDto(articleEntity, {cstId: cstId})); 
 
     return articleDaoArray;
   }
 
-  async getArticleById(articleId: number): Promise<ArticleOutDto> {
+  async getArticleById(articleId: number, cstId?: number): Promise<ArticleOutDto> {
     const articleEntity = await this.articleDao.findById(articleId);
 
-    const articleDto: ArticleOutDto = ArticleTransformer.entityToDto(articleEntity);
+    const articleDto: ArticleOutDto = ArticleTransformer.entityToDto(articleEntity, {cstId});
 
     return articleDto;
   }
@@ -102,7 +102,7 @@ export class ArticleService {
 
     // validate if user is owner
     const tempArticleEntity = await this.articleDao.findById(articleId);
-    const tempArticleDto = ArticleTransformer.entityToDto(tempArticleEntity);
+    const tempArticleDto = ArticleTransformer.entityToDto(tempArticleEntity, {cstId});
 
     if(tempArticleDto.owner.id != cstId)  {
       throw new ForbiddenException("User is not owner");
@@ -133,7 +133,7 @@ export class ArticleService {
   async deleteArticle(articleId: number, cstId: number): Promise<void> {
     // validate if user is owner
     const tempArticleEntity = await this.articleDao.findById(articleId);
-    const tempArticleDto = ArticleTransformer.entityToDto(tempArticleEntity);
+    const tempArticleDto = ArticleTransformer.entityToDto(tempArticleEntity, {cstId});
 
     if (tempArticleDto.owner.id != cstId) {
       throw new ForbiddenException("User is not owner");
