@@ -111,8 +111,7 @@ function ProfilePage(props) {
                 <FormComponent>
                   <input type="text" name="title" ref={props.editNameRef} defaultValue={Article.name} placeholder="Title" />
                   <textarea name="description" ref={props.editDescriptionRef} defaultValue={Article.description} style={{ width: '65%' }} rows="4" placeholder="Description" />
-                  <input type="text" name="" ref={props.editEpisodeRef} defaultValue={Article.episode} placeholder="" />
-                  <input type="text" name="" ref={props.editUrlRef} defaultValue={Article.originalLink} placeholder="" />
+                  <input type="text" name="" ref={props.imageUrlRef} defaultValue={Article.imageUrl} placeholder="Image url" />
                   <div className="categorySection">
                     {props.dataForUpdatedCategories.map((category) => (
                       <button className="categoryButton" key={category.id} style={category?.isSelected ? { background: "#3c6cb9" } : null} onClick={() => props.onCategoryUpdateClick(category.name)}>
@@ -120,7 +119,6 @@ function ProfilePage(props) {
                       </button>
                     ))}
                   </div>
-                  <input type="text" name="materials" ref={props.editMaterialsRef} defaultValue={Article.materials} placeholder="Materials" />
                   <ButtonComponent
                     bgColor="green"
                     onClick={() => props.updateArticle(Article.id)}
@@ -189,7 +187,6 @@ function ProfilePage(props) {
                   <div>
                     <h3>{Article.name}</h3>
                     <p>Owner: {Article.owner.name}</p>
-                    {/* <p>Episode: {Article.episode}</p> */}
                     <GetCategories array={Article.categories} />
                     <span>Created: {DateUtils.getAgeFromDate(new Date(Article.createdAt))} ago</span>
                   </div>

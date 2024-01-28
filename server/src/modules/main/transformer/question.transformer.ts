@@ -15,13 +15,4 @@ export class QuestionTransformer {
 
     return questionEntity;
   }
-
-  // static entityToDao(categoryEntity: CategoryEntity): CategoryOutDto {
-  //   const categoryDao = new CategoryOutDto(
-  //     categoryEntity.id,
-  //     categoryEntity.name,
-  //   )
-
-  //   return categoryDao;
-  // }
 }

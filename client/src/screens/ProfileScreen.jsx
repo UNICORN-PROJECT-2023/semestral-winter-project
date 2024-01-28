@@ -88,7 +88,7 @@ function ProfileScreen() {
   const materialsRef = useRef();
 
   const editNameRef = useRef();
-  const editEpisodeRef = useRef();
+  const editImageUrlRef = useRef();
   const editDescriptionRef = useRef();
   const editOriginalLinkRef = useRef();
   const editMaterialsRef = useRef();
@@ -117,14 +117,14 @@ function ProfileScreen() {
   }
 
   async function updateArticle(ArticleId) {
+    console.log(updateCategories);
     try {
       await articleService.updateArticle(
         ArticleId,
-        editNameRef.current.value,
-        editDescriptionRef.current.value,
-        Number(editEpisodeRef.current.value),
-        editOriginalLinkRef.current.value,
-        [editMaterialsRef.current.value],
+        editNameRef.current?.value,
+        editDescriptionRef.current?.value,
+        editImageUrlRef.current?.value, 
+        editMaterialsRef.current?.value ? [editMaterialsRef.current?.value] : [],
         updateCategories
         .filter((category) => category.isSelected)
         .map((category) => ({name: category.name})
@@ -297,6 +297,7 @@ function ProfileScreen() {
       episodeRef={episodeRef}
       urlRef={originalLinkRef}
       materialsRef={materialsRef}
+      imageUrlRef={editImageUrlRef}
 
       editUserNameRef={editUserNameRef}
       editUserEmailRef={editUserEmailRef}
@@ -311,7 +312,6 @@ function ProfileScreen() {
 
       editNameRef={editNameRef}
       editDescriptionRef={editDescriptionRef}
-      editEpisodeRef={editEpisodeRef}
       editUrlRef={editOriginalLinkRef}
       editMaterialsRef={editMaterialsRef}
 

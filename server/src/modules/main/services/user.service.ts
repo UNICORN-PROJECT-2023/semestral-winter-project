@@ -24,7 +24,7 @@ export class UserService {
   
   async getMe(userId: number): Promise<CustomerEntity> {
     const customerEntity: CustomerEntity = await this.customerDao.findById(userId);
-    customerEntity.password = undefined;
+    customerEntity.password = null;
 
     return customerEntity;
   }

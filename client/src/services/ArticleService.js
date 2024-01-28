@@ -47,8 +47,10 @@ export default class ArticleService {
         throw new Error(error.message);
     }
 
-    updateArticle = async (id, title, content, materials = [], categories = []) => {
-        const response = await this.apiService.put(`/article/${id}`, { title, content, materials, categories });
+    updateArticle = async (id, name, description, imageUrl, materials = [], categories = []) => {
+        console.log(id, name, description, imageUrl, materials, categories);
+        
+        const response = await this.apiService.put(`/article/${id}`, { name, description, imageUrl, materials, categories });
         console.log(await response.json());
         if (response.status === 200 || response.status === 201 || response.status === 202) {
             return;

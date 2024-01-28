@@ -20,7 +20,6 @@ export class AppGuard extends AuthGuard('jwt') {
     try {
         await super.canActivate(context);
       } catch(e) {
-        console.log("User is not authorized");
 
         if(!roles) {
           return true;
